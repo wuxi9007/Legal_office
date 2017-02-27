@@ -36,8 +36,8 @@ class SimulationsController < ApplicationController
           if from == to
             @message = "Don't contact yourself!"
           else
-            from_new_cases = Case.where(personnel_id: from).where('completion is NULL or completion = ""')
-            from_old_cases = Case.where(personnel_id: from).where.not('completion is NULL or completion = ""')
+            from_new_cases = Case.where(personnel_id: from).where("completion is NULL or completion = ''")
+            from_old_cases = Case.where(personnel_id: from).where.not("completion is NULL or completion = ''")
             @result = true
             from_new_cases.each do |fnc|
               if Case.where(c1_id: fnc.c2_id).present?
@@ -49,9 +49,9 @@ class SimulationsController < ApplicationController
               end
             end
             from_old_cases.each do |foc|
-              if Case.where('completion is NULL or completion = ""').where(c2_id: foc.c1_id, personnel_id: to).present?
+              if Case.where("completion is NULL or completion = ''").where(c2_id: foc.c1_id, personnel_id: to).present?
                 @result = false
-                p Case.where('completion is NULL or completion = ""').where(c2_id: foc.c1_id, personnel_id: to)
+                p Case.where("completion is NULL or completion = ''").where(c2_id: foc.c1_id, personnel_id: to)
                 break
               end
             end
