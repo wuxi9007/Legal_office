@@ -36,15 +36,27 @@ class SimulationsController < ApplicationController
           if from == to
             @message = "Don't contact yourself!"
           else
-            to_personnel_name = Personnel.find(to).name
-            to_cases = Case.where(personnel_id: to)
+            from_new_cases = Case.where(personnel_id: from).where('completion is NULL or completion = ""')
+            from_old_cases = Case.where(personnel_id: from).where.not('completion is NULL or completion = ""')
             @result = true
-            from_cases.each do |fc|
-              if to_cases.where(c1_id: fc.c2_id).present?
+            from_new_cases.each do |fnc|
+              if Case.where(c1_id: fnc.c2_id).present?
+                if Case.where(c1_id: fnc.c2_id).where(personnel_id: to).present?
+                  @result = false
+                  p Case.where(c1_id: fnc.c2_id).where(personnel_id: to)
+                  break
+                end
+              end
+            end
+            from_old_cases.each do |foc|
+              if Case.where('completion is NULL or completion = ""').where(c2_id: foc.c1_id, personnel_id: to).present?
                 @result = false
+                p Case.where('completion is NULL or completion = ""').where(c2_id: foc.c1_id, personnel_id: to)
                 break
               end
             end
+            to_personnel_name = Personnel.find(to).name
+            to_cases = Case.where(personnel_id: to)
             message = from_personnel_name + " (Personnel ID: #{from})" + " has attempted to contact " + to_personnel_name + " (Personnel ID: #{to})" + "!"
             Audit.create(details: message, result: @result)
           end
