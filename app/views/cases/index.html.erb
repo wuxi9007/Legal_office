@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cases</h1>
+
+<div class="model-index">
+  <div class="header row" style="background:#6C7A89;">
+    <div class="col-xs-1">Case ID</div>
+    <div class="col-xs-2">Lawyer</div>
+    <div class="col-xs-2">Deffending Comp</div>
+    <div class="col-xs-2">Opponent Comp</div>
+    <div class="col-xs-2">Start</div>
+    <div class="col-xs-2">Completion</div>
+    <div class="col-xs-1">Actions</div>
+  </div>
+  <% @cases.each do |c| %>
+    <div class="row record" style="color:#6C7A89">
+      <div class="col-xs-1"><%= c.case_id %></div>
+      <div class="col-xs-2"><%= Personnel.find(c.personnel_id).name %></div>
+      <div class="col-xs-2"><%= Company.find(c.c1_id).name %></div>
+      <div class="col-xs-2"><%= Company.find(c.c2_id).name %></div>
+      <div class="col-xs-2"><%= c.start_time %></div>
+      <div class="col-xs-2"><%= c.completion %></div>
+      <div class="col-xs-1"><%= link_to '<span class="fa fa-edit" style="font-size:18px"></span>'.html_safe, edit_case_path(c) %> <%= link_to '<span class="fa fa-trash" style="font-size:18px"></span>'.html_safe, c, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+  
+</div>
+
+<br>
+
+<%= link_to '<span class="fa fa-plus"></span> Case'.html_safe, new_case_path, class: "glow" %>

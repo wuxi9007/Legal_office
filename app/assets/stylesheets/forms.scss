@@ -1,0 +1,68 @@
+/* form field */
+.form-field{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.form-field select{
+	height: 30px;
+}
+label{
+	color: #fff;
+	text-align:right;
+}
+
+.form-area{
+	margin-top:40px;
+}
+
+.create_model{
+	border: 2px solid #ffffff;
+	background: #000000;
+	color: #ffffff;
+	transition:.3s;
+}
+
+.create_model:hover{
+  color: #000000;
+  background: #ffffff;
+  
+}
+
+.element-chosen{
+	background: #ffffff;
+	color: #22313F;
+}
+
+/* select list item */
+.select-list-item{
+  cursor: pointer;
+}
+
+.sec2-list-item{
+  cursor: pointer;
+}
+.sec1-list-item{
+  cursor: pointer;
+}
+
+.select-element{
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	transition:.3s;
+	cursor: pointer;
+}
+.select-element:hover{
+  color: #22313F;
+  background: #ffffff;
+}
+.select-div{
+	padding:0;
+	height:125px;
+	width:200px;
+	overflow-y: scroll;
+	color: #ffffff;
+	border:1px solid #ffffff;
+	background: #22313F;
+}

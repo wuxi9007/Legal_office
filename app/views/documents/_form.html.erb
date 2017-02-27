@@ -1,0 +1,29 @@
+<%= form_for(document) do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-field row">
+    <label class="col-xs-6">NAME</label>
+    <div class="col-xs-6">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="form-field row">
+    <label class="col-xs-6">Select Case</label>
+    <div class="col-xs-6">
+      <%= f.select :case_id, options_for_select([['--Select--', nil]] + Case.all.collect{|c| [c.case_id, c.id]}, document.case_id),{}, class: "select_case" %>
+    </div>
+  </div>
+  <div class="actions" style="text-align: center;margin-top:40px">
+    <%= link_to '<span class="fa fa-angle-left" style="color:#fff;font-size:50px;float:left"></span>'.html_safe, documents_path %>
+    <%= f.submit 'Save Document', class: "create_model" %>
+  </div>
+<% end %>

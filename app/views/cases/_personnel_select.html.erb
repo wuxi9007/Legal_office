@@ -1,0 +1,22 @@
+<div class="form-field row">
+  <label class="col-xs-6" style="margin-right: 15px;">Lawyer</label>
+  <% if @denied_personnels.present?  %>
+    <% add_back = "background:#2ECC71" %>
+  <% else %>
+    <% add_back = "" %>
+  <% end %>
+  <div class="col-xs-6 select-div" style="width:173px;<%= add_back %>">
+    <% @personnels.each do |p| %>
+      <div class="select-element" per-id="<%= p.id %>"><%= p.name %></div>
+    <% end %>
+  </div>
+  <% if @denied_personnels.present? %>
+	  <div class="col-xs-6 select-div" style="width:173px;background:#CF000F">
+	    <% @denied_personnels.each do |p| %>
+	      <div class="select-element" per-id="<%= p.id %>"><%= p.name %></div>
+	    <% end %>
+	  </div>
+  <% end %>
+  <%= link_to filter_personnel_cases_path, remote: true, method: :post, id: "filter_pass", style: "display:none" do %><div class="btn btn-primary" style="margin-left:20px;margin-top:40px">Filter</div>
+  <% end %>
+</div>

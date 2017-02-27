@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: lo_development
+  pool: 5
+  username: Xi
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: lo_test
+  pool: 5
+  username: Xi
+  password: 
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: lo_production
+  pool: 5
+  username: Xi
+  password: 

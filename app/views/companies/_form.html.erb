@@ -1,0 +1,23 @@
+<%= form_for(company) do |f| %>
+  <% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-field row">
+    <label class="col-xs-6">NAME</label>
+    <div class="col-xs-6">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="actions" style="text-align: center;margin-top:40px">
+    <%= link_to '<span class="fa fa-angle-left" style="color:#fff;font-size:50px;float:left"></span>'.html_safe, companies_path %>
+    <%= f.submit 'Save Company', class: "create_model" %>
+  </div>
+<% end %>

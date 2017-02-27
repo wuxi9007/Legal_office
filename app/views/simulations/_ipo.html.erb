@@ -1,0 +1,32 @@
+<div style="text-align: right;margin-top:-40px;margin-bottom:10px;margin-right:-15px">
+  <%= link_to choose_audit_section_simulations_path(type: "all"), style: "display:inline-block;text-decoration:none", remote: true do %>
+    <div class="white-btn">Show All</div>
+  <% end %>
+  <%= link_to choose_audit_section_simulations_path(type: "accepted"), style: "display:inline-block;text-decoration:none", remote: true do %>
+    <div class="white-btn">Show <span class="fa fa-check" style="color:#2ECC71"></span></div>
+  <% end %>
+  <%= link_to choose_audit_section_simulations_path(type: "denied"), style: "display:inline-block;text-decoration:none", remote: true do %>
+    <div class="white-btn">Show <span class="fa fa-remove" style="color:#F22613"></span></div>
+  <% end %>
+</div>
+<div class="model-index">
+  <div class="header row" style="background:#19B5FE;">
+    <div class="col-xs-7">Details</div>
+    <div class="col-xs-1" style="text-align:center">Action</div>
+    <div class="col-xs-4">Time</div>
+  </div>
+  <% @audits.each do |audi| %>
+    <div class="row record">
+      <div class="col-xs-7"><%= audi.details %></div>
+      <% if audi.result == true %>
+        <% cla = "check" %>
+        <% col = "#2ECC71" %>
+      <% else %>
+        <% cla = "remove" %>
+        <% col = "#F22613" %>
+      <% end %>
+      <div class="col-xs-1" style="text-align:center"><span class="fa fa-<%= cla %>" style="color: <%= col %>"></span></div>
+      <div class="col-xs-4"><%= audi.created_at %></div>
+    </div>
+  <% end %>
+</div>

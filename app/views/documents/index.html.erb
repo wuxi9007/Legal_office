@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Documents</h1>
+
+<div class="model-index">
+  <div class="header row" style="background:#00B16A;">
+    <div class="col-xs-1">ID</div>
+    <div class="col-xs-5">NAME</div>
+    <div class="col-xs-4">Case ID</div>
+    <div class="col-xs-2">Actions</div>
+  </div>
+  <% @documents.each do |document| %>
+    <div class="row record" style="color: #00B16A">
+      <div class="col-xs-1"><%= document.id %></div>
+      <div class="col-xs-5"><%= document.name %></div>
+      <div class="col-xs-4"><%= document.case_id %></div>
+      <div class="col-xs-2"><%= link_to '<span class="fa fa-edit" style="font-size:18px"></span>'.html_safe, edit_document_path(document) %> <%= link_to '<span class="fa fa-trash" style="font-size:18px"></span>'.html_safe, document, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+  
+</div>
+
+<br>
+
+<%= link_to '<span class="fa fa-plus"></span> Document'.html_safe, new_document_path, class: "glow" %>

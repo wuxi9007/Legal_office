@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require jquery-ui
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+h1,h2,h3,h4,h5{
+	color: #ffffff;
+	font-weight:200;
+	margin-bottom: 20px;
+}
+#notice{
+	color: #C8F7C5;
+}
+.glow{
+	color:#ffffff;
+	transition:.3s;
+}
+.glow:hover{
+	text-decoration: none;
+	color: #ffffff;
+	cursor: pointer;
+	text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff;
+}
+
+/* Table style */
+.model-index span{
+  color: #4183D7;
+}
+.model-index .header{
+	height:40px;
+	line-height: 40px;
+	margin-bottom: 5px;
+	color: #ffffff;
+}
+.model-index .record{
+	background: #ffffff;
+	height:40px;
+	line-height: 40px;
+	margin-bottom: 3px;
+	color: #19B5FE;
+}

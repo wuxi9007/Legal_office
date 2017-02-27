@@ -1,0 +1,14 @@
+<% if @message.present? %>
+  $('.head').after('<div class="message" style="color:#F22613;text-align:center">'+'<%= @message %>' + '</div>');
+  $('.message').delay(5000).fadeOut();
+<% else %>
+	<% if @result == true %>
+		$('.boxes-<%= @box %>').css('background', '#2ECC71');
+		$('.boxes-<%= @box %> > div:first-child').before('<span class="fa fa-check test-result" style="color:#ffffff;font-size:70px;position:absolute;right:10px"></span>');
+	<% else %>
+		$('.boxes-<%= @box %>').css('background', '#F22613');
+		$('.boxes-<%= @box %> > div:first-child').before('<span class="fa fa-remove test-result" style="color:#ffffff;font-size:70px;position:absolute;right:10px"></span>');
+	<% end %>
+	$('.boxes-<%= @box %>').removeClass("box-selected");
+	$("div[href*=ipo]").html('<%= j(render "simulations/ipo") %>');
+<% end %>

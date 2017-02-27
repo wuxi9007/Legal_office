@@ -1,0 +1,104 @@
+<%= form_tag assign_test_simulations_path, remote: true do %>
+  <h1>Who You Are</h1>
+  <%= hidden_field_tag :role, "", id: "role" %>
+  <%= hidden_field_tag :personnel_from, "", id: "personnel-from-id" %>
+  <%= hidden_field_tag :personnel_to, "", id: "personnel-to-id" %>
+  <%= hidden_field_tag :doc_id, "", id: "doc-id" %>
+  <%= hidden_field_tag :officer_def, "", id: "def-company" %>
+  <%= hidden_field_tag :officer_off, "", id: "off-company" %>
+  <%= hidden_field_tag :officer_per, "", id: "officer-personnel-id" %>
+  <div class="row">
+    <div class="col-xs-4 system-block role-box border-bot slide-list" id="per" style="border:0;background: #000000;height:200px">
+      <div class="glow" id="per-icon" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+        <div class="fa fa-user" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;" id="show_name">PERSONNEL</span>
+      </div>
+      <ul id="per-list" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#000000;">
+        <% @personnels.each do |p| %>
+          <li class="select-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= p.id %>">
+            <%= p.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-4 system-block glow role-box border-bot" id="ipo" style="border:0;background: #000000;height:200px">
+      <div style="margin-top:25px;color:#ffffff;text-align:center;font-size:25px">
+        <div class="fa fa-user-secret" style="display: block;font-size: 100px"></div>IPO
+      </div>
+    </div>
+    <div class="col-xs-4 system-block glow role-box border-bot" id="off" style="border:0;background: #000000;height:200px">
+      <div style="margin-top:25px;color:#ffffff;text-align:center;font-size:25px">
+        <div class="fa fa-vcard" style="display: block;font-size: 100px"></div>OFFICER
+      </div>
+    </div>
+  </div>
+  <div id="section-2" style="margin-top:20px;">
+    
+  </div>
+  <div style="display:none">
+    <div href="per">
+      <div class="row">
+        <div class="col-xs-6 system-block slide-list per-box border-bot boxes-01" style="border:0;background: #000000;height:200px">
+          <div class="glow" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+            <div class="fa fa-phone" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;">CONTACT</span>
+          </div>
+          <ul id="contact" class="" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#000000;">
+            <% Personnel.all.each do |p| %>
+              <li class="sec1-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= p.id %>"><%= p.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-xs-6 system-block slide-list per-box border-bot boxes-02" style="border:0;background: #000000;height:200px">
+          <div class="glow" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+            <div class="fa fa-folder-open" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;">DOCUMENT</span>
+          </div>
+          <ul id="document" class="" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#000000;">
+            <% Document.all.each do |d| %>
+              <li class="sec1-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= d.id %>"><%= d.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div href="ipo">
+      <%= render "simulations/ipo" %>
+    </div>
+    <div href="off" class="row">
+      <div class="col-xs-4 system-block officer-slide-list" style="border:0;border-bottom:1px solid #ffffff;background: #000000;height:200px">
+        <div class="glow" id="c1-icon" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+          <div class="fa fa-handshake-o" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;font-size:15px;">DEFENDING</span><span class="show-text" style="position:relative;left: -50%;font-size:15px"></span>
+        </div>
+        <ul id="def-list" class="" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#ffffff;">
+          <% @companies.each do |c| %>
+            <li class="sec2-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= c.id %>">
+              <%= c.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-xs-4 system-block officer-slide-list" style="border:0;border-bottom:1px solid #ffffff;background: #000000;height:200px">
+        <div class="glow" id="c2-icon" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+          <div class="fa fa-hand-rock-o" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;font-size:15px">OPPONENT</span><span class="show-text" style="position:relative;left: -50%;font-size:15px"></span>
+        </div>
+        <ul id="off-list" class="" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#ffffff;">
+          <% @companies.all.each do |c| %>
+            <li class="sec2-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= c.id %>">
+              <%= c.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-xs-4 system-block officer-slide-list boxes-3" style="border:0;border-bottom:1px solid #ffffff;background: #000000;height:200px">
+        <div class="glow" id="law-icon" style="position:absolute;left:50%;margin: 0 auto;padding-top:25px;color:#ffffff;text-align:center;font-size:25px;height:100%">
+          <div class="fa fa-user" style="display: block;font-size: 100px;position:relative; left: -50%;"></div><span style="position:relative;left: -50%;font-size:15px;">LAWYER</span><span class="show-text" style="position:relative;left: -50%;font-size:15px"></span>
+        </div>
+        <ul id="law-list" class="" style="display:none;list-style: none;padding:0;margin-left:50%;height:100%;overflow-y: scroll;color:#ffffff;">
+          <% Personnel.all.each do |p| %>
+            <li class="sec2-list-item" style="text-align: center;height:40px;line-height: 40px;" pass_id="<%= p.id %>">
+              <%= p.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

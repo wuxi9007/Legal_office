@@ -1,0 +1,47 @@
+<div>
+	<h3 style="text-align: left">LEGAL OFFICE SYSTEM</h3>
+</div>
+
+<div class="row" style="">
+  <div class="col-sm-4 no-padding">
+	  <%= link_to personnels_path, class: "glow" do %>
+		  <div class="col-sm-12 col-xs-12 system-block" style="opacity:1;background: #19B5FE;position: relative;">
+		  	<div style="margin-top:60px;color:#ffffff;text-align:center;font-size:25px">
+		  		<div class="fa fa-users" style="display: block;font-size: 100px"></div>PERSONNELS
+		  	</div>
+		  </div>
+	  <% end %>
+	  <%= link_to companies_path, class: "glow" do %>
+		  <div class="col-sm-12 col-xs-12 system-block" style="opacity:1;background: #F9690E;">
+		  	<div style="margin-top:60px;color:#ffffff;text-align:center;font-size:25px">
+		  		<div class="fa fa-building" style="display: block;font-size: 100px"></div>COMPANIES
+		  	</div>
+		  </div>
+	  <% end %>
+  </div>
+  <div class="col-sm-4 no-padding">
+    <%= link_to simulations_path, class: "glow" do %>
+		  <div class="col-sm-12 col-xs-12" style="opacity:1;background: #F9BF3B;height:500px;border:3px solid #000000">
+		  	<div style="margin-top:180px;color:#ffffff;text-align:center;font-size:25px">
+		  		<div class="fa fa-laptop" style="display: block;font-size: 100px"></div>SIMULATION
+		  	</div>
+		  </div>
+	  <% end %>
+  </div>
+  <div class="col-sm-4 no-padding">
+	  <%= link_to documents_path, class: "glow" do %>
+		  <div class="col-sm-12 col-xs-12 system-block" style="opacity:1;background: #00B16A;">
+		  	<div style="margin-top:60px;color:#ffffff;text-align:center;font-size:25px">
+		  		<div class="fa fa-file-text-o" style="display: block;font-size: 100px"></div>DOCUMENTS
+		  	</div>
+		  </div>
+	  <% end %>
+	  <%= link_to cases_path, class: "glow" do %>
+		  <div class="col-sm-12 col-xs-12 system-block" style="opacity:1;background: #6C7A89;">
+		  	<div style="margin-top:60px;color:#ffffff;text-align:center;font-size:25px">
+		  		<div class="fa fa-folder" style="display: block;font-size: 100px"></div>CASES
+		  	</div>
+		  </div>
+	  <% end %>
+  </div>
+</div>

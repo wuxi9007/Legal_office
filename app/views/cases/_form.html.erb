@@ -1,0 +1,60 @@
+<%= form_for(c) do |f| %>
+  <% if c.errors.any? %>
+    <div id="error_explanation">
+      <h3 style="color:#D64541"><%= pluralize(c.errors.count, "error") %> occured:</h2>
+
+      <ul>
+      <% c.errors.full_messages.each do |message| %>
+        <li style='color:#D64541'><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-field row">
+    <label class="col-xs-6">Defending company</label>
+    <div class="col-xs-6">
+      <%= f.select :c1_id, options_for_select([['--Select--', nil]]+Company.all.collect{|com| [com.name, com.id]}, c.c1_id),{}, class: "select_company" %>
+    </div>
+  </div>
+  <div class="form-field row">
+    <label class="col-xs-6">Opponent company</label>
+    <div class="col-xs-6">
+      <%= f.select :c2_id, options_for_select([['--Select--', nil]]+Company.all.collect{|com| [com.name, com.id]}, c.c2_id),{}, class: "select_company" %>
+    </div>
+  </div>
+  <%= f.hidden_field :personnel_id, id: "p-id" %>
+  <div id="per-sel">
+    <%= render "cases/personnel_select" %>
+  </div>
+  <div class="form-field row">
+    <label class="col-xs-6">Start Time</label>
+    <div class="col-xs-6">
+      <%= f.text_field :start_time, class: "start_stamp" %>  
+    </div>
+  </div>
+  <div class="form-field row">
+    <label class="col-xs-6">Completion Time</label>
+    <div class="col-xs-6">
+      <%= f.text_field :completion, class: "complete_stamp" %>
+    </div>
+  </div>
+  <div class="actions" style="text-align: center;margin-top:40px;">
+    <%= link_to '<span class="fa fa-angle-left" style="color:#fff;font-size:50px;float:left"></span>'.html_safe, cases_path %>
+    <%= f.submit 'Save Case', class: "create_model" %>
+  </div>
+<% end %>
+
+<script>
+  $('.start_stamp').datepicker({
+    dateFormat: 'mm/dd/yy',
+    changeMonth: true,
+    yearRange: '-122:+10',
+    changeYear: true
+  });
+  $('.complete_stamp').datepicker({
+    dateFormat: 'mm/dd/yy',
+    changeMonth: true,
+    yearRange: '-122:+10',
+    changeYear: true
+  });
+</script>

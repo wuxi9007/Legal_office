@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+
+<div class="model-index">
+  <div class="header row" style="background:#F9690E">
+    <div class="col-xs-1">ID</div>
+    <div class="col-xs-7">NAME</div>
+    <div class="col-xs-4">Actions</div>
+  </div>
+  <% @companies.each do |company| %>
+    <div class="row record" style="color:#F9690E">
+      <div class="col-xs-1"><%= company.id %></div>
+      <div class="col-xs-7"><%= company.name %></div>
+      <div class="col-xs-4"><%= link_to '<span class="fa fa-edit" style="font-size:18px"></span>'.html_safe, edit_company_path(company) %> <%= link_to '<span class="fa fa-trash" style="font-size:18px"></span>'.html_safe, company, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+  
+</div>
+
+<br>
+
+<%= link_to '<span class="fa fa-plus"></span> Company'.html_safe, new_company_path, class: "glow" %>

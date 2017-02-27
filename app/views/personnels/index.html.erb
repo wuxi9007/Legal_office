@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Personnels</h1>
+
+<div class="model-index">
+  <div class="header row" style="background:#19B5FE;">
+    <div class="col-xs-1">ID</div>
+    <div class="col-xs-7">NAME</div>
+    <div class="col-xs-4">Actions</div>
+  </div>
+  <% @personnels.each do |personnel| %>
+    <div class="row record">
+      <div class="col-xs-1"><%= personnel.id %></div>
+      <div class="col-xs-7"><%= personnel.name %></div>
+      <div class="col-xs-4"><%= link_to '<span class="fa fa-edit" style="font-size:18px"></span>'.html_safe, edit_personnel_path(personnel) %> <%= link_to '<span class="fa fa-trash" style="font-size:18px"></span>'.html_safe, personnel, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+  
+</div>
+
+<br>
+
+<%= link_to '<span class="fa fa-plus"></span> Personnel'.html_safe, new_personnel_path, class: "glow" %>

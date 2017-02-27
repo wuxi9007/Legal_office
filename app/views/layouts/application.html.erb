@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LegalOffice</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="background">
+    <div class="head" style="height:50px">
+	    <%= link_to '<span class="fa fa-home" style="position:absolute;top:20px;left:49%;font-size:30px;color:#ffffff"></span>'.html_safe, root_path, class: "glow" %>
+    </div>
+    <div class="container">
+	    <%= yield %>
+    </div>
+    <div class="footer" style="color:white;height:150px;text-align:center;line-height: 150px;">
+      Xi Project | 2017
+    </div>
+  </body>
+</html>

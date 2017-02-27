@@ -1,0 +1,32 @@
+/* blue */
+.blue-btn{
+	color: #ffffff;
+	height:40px;
+	background: #4183D7;
+	padding-left:20px;
+	padding-right: 20px;
+	cursor: pointer;
+	border: 0;
+}
+.blue-btn:focus{
+	outline:0;
+}
+
+/* white */
+.white-btn{
+	color: #19B5FE;
+	height:40px;
+	line-height: 40px;
+	background: #ffffff;
+	padding-left:20px;
+	padding-right: 20px;
+	cursor: pointer;
+	border: 0;
+	transition:.2s;
+}
+.white-btn:hover{
+  border-bottom: 3px solid #19B5FE;
+}
+.white-btn:focus{
+	outline:0;
+}
