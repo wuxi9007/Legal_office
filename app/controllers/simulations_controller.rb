@@ -20,7 +20,7 @@ class SimulationsController < ApplicationController
           @box = "02"
           doc_id = params[:doc_id].to_i
           @result = true
-          from_cases.each do |fc|
+          from_cases.where("completion is NULL or completion = ''").each do |fc|
             Case.where(c1_id: fc.c2_id).each do |c|
               if c.documents.first.id == doc_id
                 @result = false
@@ -36,8 +36,8 @@ class SimulationsController < ApplicationController
           if from == to
             @message = "Don't contact yourself!"
           else
-            from_new_cases = Case.where(personnel_id: from).where("completion is NULL or completion = ''")
-            from_old_cases = Case.where(personnel_id: from).where.not("completion is NULL or completion = ''")
+            from_new_cases = from_cases.where("completion is NULL or completion = ''")
+            from_old_cases = from_cases.where.not("completion is NULL or completion = ''")
             @result = true
             from_new_cases.each do |fnc|
               if Case.where(c1_id: fnc.c2_id).present?
