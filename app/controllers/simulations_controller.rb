@@ -41,7 +41,7 @@ class SimulationsController < ApplicationController
             @result = true
             from_new_cases.each do |fnc|
               if Case.where(c1_id: fnc.c2_id).present?
-                if Case.where(c1_id: fnc.c2_id).where(personnel_id: to).present?
+                if Case.where(c1_id: fnc.c2_id, personnel_id: to).present?
                   @result = false
                   p Case.where(c1_id: fnc.c2_id).where(personnel_id: to)
                   break
