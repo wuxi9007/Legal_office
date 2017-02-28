@@ -105,32 +105,7 @@
 
 <script>
 $(document).on('click', '.slide-list', function(){
-  if($(this).attr('class').indexOf("opened") == -1){
-    $(this).children('div').animate({"left": '-=80'}, 0);
-    $(this).children('ul').slideDown();
-    $(this).addClass('opened');
-  }else{
-    $(this).children('div').animate({"left": '+=80'}, 0);
-    $(this).children('ul').slideUp(0);
-    if($(this).children('ul').children('.choosed').text()!=""){
-      $(this).children().children('span').html($(this).children('ul').children('.choosed').text());
-    }
-    $(this).removeClass('opened');
-  }
-  if($(this).attr('class').indexOf('per-box')!= -1){
-    $('#section-2 .per-box').removeClass('border-bot');
-    if($('#section-2 .box-selected').attr('class')!=null && $(this).attr('class').indexOf('box-selected')==-1){
-      if($('#section-2 .box-selected').attr('class').indexOf('opened') != -1){
-        $('#section-2 .box-selected').children('div').animate({"left": '+=80'}, 0);
-        $('#section-2 .box-selected').children('ul').slideUp(0);
-        $('#section-2 .box-selected').removeClass('opened');
-      }
-    }
-    $('#section-2 .box-selected').removeClass('box-selected');
-    $(this).addClass('box-selected');
-  }
-  $("div[class*='boxes-']").css('background', "#000000");
-  $(".test-result").remove();
+  alert(1);
 });
 
 </script>
